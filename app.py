@@ -13,6 +13,12 @@ model=load_model(os.path.join(os.path.abspath(os.path.dirname(__file__)),"stocks
 @app.route('/')
 def home():
     return render_template('mainpage.html')
+@app.route('/mainpage.html')
+def mp():
+    return render_template('mainpage.html')
+@app.route('/us.html')
+def us():
+    return render_template('us.html')
 @app.route('/index.html')
 def index():
     return render_template('index.html')
@@ -87,11 +93,14 @@ def monte():
 
         p = s / 1000
         if int(int_features[0]) > p:
-            answer='ok'
+            answer='The budget is OKAY'
         else:
-            answer='not okay'
+            answer='The budget is NOT OKAY'
 
         return render_template('monts.html', prediction_texts=answer)
 
+# if __name__ == "__main__":
+#     app.run(debug=True)
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='192.168.0.5', debug=True)
