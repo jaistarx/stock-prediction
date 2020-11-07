@@ -12,7 +12,13 @@ import os
 model=load_model(os.path.join(os.path.abspath(os.path.dirname(__file__)),"stocks.h5"))
 @app.route('/')
 def home():
+    return render_template('mainpage.html')
+@app.route('/index.html')
+def index():
     return render_template('index.html')
+@app.route('/generic.html')
+def generic():
+    return render_template('generic.html')
 @app.route('/monts.html')
 def goals():
     return render_template('monts.html')
